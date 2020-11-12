@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../service/firebase.service';
+// import { UserService} from '../service/user.service'
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfilePage implements OnInit {
     private loadingCtrl: LoadingController,
     private  auth: AuthService,
     private fserv : FirebaseService,
+    // private userService : UserService,
   ) {}
 
   logout(){
@@ -36,5 +38,5 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     
   }
-
+  
 }

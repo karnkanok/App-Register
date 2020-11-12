@@ -14,6 +14,8 @@ import { Component, OnInit } from '@angular/core';
 export class UpdateProfilePage implements OnInit {
 
   name: string;
+  email: string;
+  password: string ;
 
   constructor(
     private afs: AngularFirestore,
@@ -29,37 +31,40 @@ export class UpdateProfilePage implements OnInit {
   ngOnInit() {
     // this.auth.getName().subscrib(t)
   }
+  
 
 
-  save(name){
+  save(){
 
-    // if(this.name){
-    //   const loading = await this.loadingCtrl.create({
-    //     message: 'loading',
-    //     spinner: 'crescent',
-    //     showBackdrop: true,
-    //   });
-    //   loading.present();
-
-    //   // this.afauth.updateCurrentUser(user: firebase.userID)
-    //   // 'name': this.name,
-    //   //data.user.sendEmailVerification();
-    // }
-
-    this.router.navigate(['/update-profile',name]);
+    this.router.navigate(['/profile',]);
   }
-  // async save(){
-  //   if ( this.name){
-  //     const loading = await this.loadingCtrl.create({
-  //       message: 'save',
-  //       spinner: 'crescent',
-  //       showBackdrop:true,
-  //     });
 
-  //     loading.present();
 
-  //     // this.afs.collection('profile').doc()
-  //   }
-  // }
+
+  async register() {
+    if (this.name && this.email && this.password){
+      const loading = await this.loadingCtrl.create({
+        message: 'loading',
+        spinner: 'crescent',
+        showBackdrop: true,
+      });
+      loading.present();
+
+
+      this.afauth.createUserWithEmailAndPassword(this.email,this.password).then((data) => {
+        this.afs.collection('user').doc(data.user.uid).set({
+          'userID': data.user.uid,
+          'name': this.name,
+          'email': this.email,
+          'createdAt': Date.now()
+        });
+
+        data.user.sendEmailVerification();
+        console.log(data.user.email);
+      })
+      
+    }
+   
+  }// end of register
 
 }
