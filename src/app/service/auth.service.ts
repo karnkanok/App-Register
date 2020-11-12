@@ -46,7 +46,7 @@ export class AuthService {
     this.afauth.signInWithEmailAndPassword(email, pass).then((data)=>{
       if (!data.user.emailVerified){
         loading.dismiss();
-        // this.toast('Please verified your email!', 'danger');
+         this.toast('Please verified your email!', 'danger');
         // this.toast(' Please verified your email ! ' + 'danger');
         this.logout();
       }else{
@@ -61,9 +61,9 @@ export class AuthService {
       this.router.navigate(['/login']);
     });
   }
-  async toast(){
+  async toast(message,status){
     const toast = await this.toastr.create({
-      message: 'message',
+      message: message,
       position: 'top',
       color: status,
       duration: 2000
