@@ -26,7 +26,7 @@ export class AuthService {
     this.user$ = this.afauth.authState.pipe(
       switchMap(  user => {
         if(user) {
-          this.afs.doc('user/${user.uid}').valueChanges();
+          return this.afs.doc('user/${user.uid}').valueChanges();
         }else{
           return of(null);
         }
@@ -51,7 +51,7 @@ export class AuthService {
         this.logout();
       }else{
         loading.dismiss();
-        this.router.navigate(['./home']);
+        this.router.navigate(['./profile']);
       }
     })
   } //end of login
