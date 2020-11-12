@@ -55,7 +55,7 @@ export class AuthService {
       }
     })
   } //end of login
-
+  //
   logout(){
     this.afauth.signOut().then(() => {
       this.router.navigate(['/login']);
