@@ -15,13 +15,14 @@ import { FormsModule } from '@angular/forms';
 //firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 import { environment } from '../environments/environment.prod';
 import { AuthService } from './service/auth.service';
 import { AuthGuard} from './guards/auth.guard';
 
-
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,12 +34,14 @@ import { AuthGuard} from './guards/auth.guard';
             AngularFireAuthModule,
             AngularFireModule.initializeApp(environment.firebaseConfig),
             AngularFirestoreModule,
+            
           ],
   providers: [
     AuthGuard,
     AuthService,
     StatusBar,
     SplashScreen,
+    AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

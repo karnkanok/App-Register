@@ -42,6 +42,7 @@ export class LoginPage implements OnInit {
       .then(()=>{
         loading.dismiss();
         // this.router.navigate(['/profile'])
+        
       })
       .catch((error)=>{
         loading.dismiss();

@@ -1,0 +1,18 @@
+
+<ion-card-header>
+  <ion-card-title style="text-align: center;">Update Profile</ion-card-title>
+</ion-card-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <!-- <ion-label type="text">name</ion-label> -->
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="save()">save</ion-button>
+  </ion-list>
+</ion-content>
+
+
+

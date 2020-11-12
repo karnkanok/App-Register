@@ -40,6 +40,7 @@ export class RegisterPage implements OnInit {
       });
       loading.present();
 
+
       this.afauth.createUserWithEmailAndPassword(this.email,this.password).then((data) => {
         this.afs.collection('user').doc(data.user.uid).set({
           'userID': data.user.uid,
@@ -49,7 +50,7 @@ export class RegisterPage implements OnInit {
         });
 
         data.user.sendEmailVerification();
-
+        console.log(data.user.email);
       })
       .then(()=>{
         // console.log('success');
@@ -66,6 +67,7 @@ export class RegisterPage implements OnInit {
       // console.log('please fill the form!');
       this.toast('Please Fill the Form', 'danger');
     }
+   
   }// end of register
 
 

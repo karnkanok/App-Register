@@ -10,7 +10,7 @@ import { switchMap } from 'rxjs/operators';
 // import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
-@Injectable()
+@Injectable({})
 export class AuthService {
 
   user$: Observable<User>;
